@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Büyük Buluşma — Kapak & Duyuru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Montserrat:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --violet: #6b5b95;
+      --violet-deep: #4a3f6e;
+      --violet-light: #9b8bc4;
+      --blue: #7eb8e8;
+      --blue-accent: #5a9fd4;
+      --blue-light: #b8daf5;
+      --text: #2d2848;
+      --text-soft: #5a5478;
+      --border: rgba(107, 91, 149, 0.18);
+      --shadow: 0 12px 48px rgba(74, 63, 110, 0.1);
+      --card: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(165deg, #ebe4f8 0%, #dceefb 50%, #f0ecfa 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    /* ─── KAPAK ─── */
+    .cover-wrap {
+      margin-bottom: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(107, 91, 149, 0.22);
+    }
+
+    .cover {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f4f0fc 0%, #e8e0f8 25%, #dceefb 55%, #e6dff5 80%, #f0ecfa 100%);
+    }
+
+    .glow-top {
+      position: absolute;
+      top: -15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 55%;
+      background: radial-gradient(ellipse, rgba(183, 218, 245, 0.7) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .glow-left {
+      position: absolute;
+      bottom: 0;
+      left: -5%;
+      width: 50%;
+      height: 75%;
+      background: radial-gradient(ellipse, rgba(200, 184, 232, 0.45) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .glow-right {
+      position: absolute;
+      bottom: 0;
+      right: -5%;
+      width: 50%;
+      height: 75%;
+      background: radial-gradient(ellipse, rgba(184, 218, 245, 0.5) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .frame {
+      position: absolute;
+      inset: 2.5%;
+      border: 1px solid rgba(107, 91, 149, 0.35);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(126, 184, 232, 0.3);
+    }
+
+    .corner {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: var(--violet);
+      border-style: solid;
+      opacity: 0.55;
+      z-index: 10;
+    }
+
+    .corner-tl { top: 3.5%; left: 3.5%; border-width: 2px 0 0 2px; }
+    .corner-tr { top: 3.5%; right: 3.5%; border-width: 2px 2px 0 0; }
+    .corner-bl { bottom: 3.5%; left: 3.5%; border-width: 0 0 2px 2px; }
+    .corner-br { bottom: 3.5%; right: 3.5%; border-width: 0 2px 2px 0; }
+
+    .speakers {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .speaker {
+      position: relative;
+      flex: 0 0 42%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .speaker-left { justify-content: flex-start; }
+    .speaker-right { justify-content: flex-end; }
+
+    .speaker img {
+      height: 92%;
+      width: auto;
+      max-width: 100%;
+      object-fit: cover;
+      filter: drop-shadow(0 16px 40px rgba(74, 63, 110, 0.2));
+    }
+
+    .speaker-left img {
+      object-position: center 15%;
+      mask-image: linear-gradient(to right, black 78%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 78%, transparent 100%);
+    }
+
+    .speaker-right img {
+      object-position: center 20%;
+      mask-image: linear-gradient(to left, black 78%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, black 78%, transparent 100%);
+    }
+
+    .speaker-caption {
+      position: absolute;
+      bottom: 7%;
+      z-index: 7;
+      width: max-content;
+      max-width: min(280px, 38%);
+      padding: 12px 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(107, 91, 149, 0.15);
+      box-sizing: border-box;
+    }
+
+    .speaker-caption-left {
+      left: 20px;
+      right: auto;
+      text-align: left;
+      border-left: 3px solid var(--violet);
+    }
+
+    .speaker-caption-right {
+      right: 20px;
+      left: auto;
+      text-align: right;
+      border-right: 3px solid var(--blue);
+    }
+
+    .caption-company {
+      font-size: clamp(8px, 0.8vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--violet-deep);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .caption-role {
+      font-size: clamp(7px, 0.7vw, 10px);
+      color: var(--text-soft);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .caption-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(15px, 1.5vw, 22px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .center-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 52% 68% at 50% 44%, rgba(255,255,255,0.88) 0%, rgba(244,240,252,0.65) 42%, transparent 72%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .bottom-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 28%;
+      background: linear-gradient(to top, rgba(232,226,248,0.85) 0%, transparent 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .cover-content {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5% 8%;
+    }
+
+    .eyebrow {
+      font-size: clamp(8px, 0.85vw, 13px);
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1.5%;
+    }
+
+    .eyebrow::before, .eyebrow::after {
+      content: "◆";
+      font-size: 6px;
+      margin: 0 10px;
+      color: var(--blue);
+    }
+
+    .cover-content h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 6.5vw, 96px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .cover-content h1 .accent {
+      display: block;
+      background: linear-gradient(180deg, #6b5b95 0%, #7eb8e8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--violet-light), var(--blue), transparent);
+      margin: 2% auto;
+    }
+
+    .guests-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(16px, 3vw, 40px);
+      margin-bottom: 2%;
+    }
+
+    .guest-label {
+      font-size: clamp(7px, 0.7vw, 10px);
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 4px;
+    }
+
+    .guest-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(18px, 2.2vw, 32px);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .guest-title {
+      font-size: clamp(8px, 0.8vw, 12px);
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    .guest-title strong { color: var(--violet-deep); }
+
+    .meta { display: flex; justify-content: center; flex-wrap: wrap; }
+    .meta-item { padding: 0 clamp(16px, 2.5vw, 36px); border-right: 1px solid var(--border); }
+    .meta-item:last-child { border-right: none; }
+    .meta-label {
+      font-size: clamp(7px, 0.65vw, 10px);
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--violet);
+    }
+    .meta-value {
+      font-size: clamp(12px, 1.3vw, 20px);
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .zoom-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 2.5%;
+      padding: clamp(8px, 1vw, 14px) clamp(20px, 2.5vw, 36px);
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--violet-deep);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .zoom-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(107, 91, 149, 0.2);
+    }
+
+    .zoom-badge svg { width: clamp(18px, 2vw, 28px); height: auto; fill: #2d8cff; }
+    .zoom-badge span {
+      font-size: clamp(9px, 0.85vw, 13px);
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .line-deco {
+      position: absolute;
+      top: 50%;
+      width: 12%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(107,91,149,0.35));
+      z-index: 4;
+    }
+    .line-deco-left { left: 6%; transform: translateY(-50%); }
+    .line-deco-right { right: 6%; transform: translateY(-50%) scaleX(-1); }
+
+    /* Kapak ↔ Anons geçişi */
+    .bridge {
+      text-align: center;
+      padding: 36px 24px 8px;
+    }
+
+    .bridge h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.15;
+      color: var(--violet-deep);
+      margin-bottom: 14px;
+      text-shadow: 0 2px 20px rgba(107, 91, 149, 0.15);
+    }
+
+    .bridge p {
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(14px, 1.6vw, 18px);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .bridge-rule {
+      width: 100%;
+      max-width: 560px;
+      height: 3px;
+      margin: 28px auto 0;
+      background: linear-gradient(90deg, transparent, var(--violet) 25%, var(--blue-accent) 50%, var(--violet) 75%, transparent);
+      border-radius: 2px;
+    }
+
+    /* ─── ANONS ─── */
+    .anons { margin-top: 8px; }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+
+    .card p { margin-bottom: 16px; font-size: 15px; color: var(--text-soft); }
+    .card p:last-child { margin-bottom: 0; }
+    .card strong { color: var(--violet-deep); font-weight: 700; }
+
+    .salutation {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--violet);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      color: var(--violet-deep);
+      margin-bottom: 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.25;
+      padding-bottom: 14px;
+      border-bottom: 2px solid rgba(107, 91, 149, 0.15);
+    }
+
+    .section-title span {
+      flex-shrink: 0;
+      font-size: 1.1em;
+    }
+
+    .milestones { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .milestones li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #faf8fe 0%, #f3f8fd 100%);
+      border-radius: 10px;
+      border-left: 3px solid var(--violet);
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .milestones .tag {
+      font-family: "Montserrat", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--violet-deep) 0%, var(--blue-accent) 100%);
+      padding: 8px 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .milestones strong { color: var(--text); }
+
+    .quote-box {
+      margin-top: 24px;
+      padding: 22px 26px;
+      background: linear-gradient(135deg, rgba(107,91,149,0.08) 0%, rgba(126,184,232,0.12) 100%);
+      border-radius: 10px;
+      border-left: 4px solid var(--blue);
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .closing-line {
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--violet-deep);
+      margin-top: 8px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+      line-height: 1.45;
+    }
+
+    .meeting-card {
+      background: linear-gradient(145deg, var(--violet-deep) 0%, #5a4a82 45%, #4a6a9a 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(74, 63, 110, 0.3);
+    }
+
+    .meeting-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 3.5vw, 38px);
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .meeting-grid {
+      display: grid;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      text-align: left;
+    }
+
+    .meeting-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .meeting-row .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      min-width: 52px;
+    }
+
+    .meeting-row .value { font-weight: 600; }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .btn-zoom { background: #fff; color: var(--violet-deep); }
+    .btn-form { background: rgba(255,255,255,0.15); color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 11px;
+      color: var(--text-soft);
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 24px 20px; }
+      .speaker-caption { display: none; }
+      .milestones li { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { max-width: 100%; padding: 0; }
+      .cover-wrap { break-after: page; box-shadow: none; }
+      .card, .meeting-card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- KAPAK -->
+    <div class="cover-wrap">
+      <article class="cover" aria-label="Büyük Buluşma kapak görseli">
+        <div class="glow-top"></div>
+        <div class="glow-left"></div>
+        <div class="glow-right"></div>
+        <div class="center-vignette"></div>
+        <div class="bottom-fade"></div>
+
+        <div class="speakers">
+          <div class="speaker speaker-left">
+            <img src="WhatsApp Image 2026-05-15 at 15.33.33.jpeg" alt="Anuş Sargsyan" />
+          </div>
+          <div class="speaker speaker-right">
+            <img src="WhatsApp Image 2026-05-15 at 15.32.59.jpeg" alt="Maksim İsip" />
+          </div>
+        </div>
+
+        <div class="speaker-caption speaker-caption-left">
+          <p class="caption-company">RSW TR A.Ş</p>
+          <p class="caption-role">Yönetim Kurulu Başkanı</p>
+          <p class="caption-name">Anuş SARGSYAN</p>
+        </div>
+        <div class="speaker-caption speaker-caption-right">
+          <p class="caption-company">Micron Global MC</p>
+          <p class="caption-role">CEO</p>
+          <p class="caption-name">Maksim İsip</p>
+        </div>
+
+        <div class="frame"></div>
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
+        <div class="line-deco line-deco-left"></div>
+        <div class="line-deco line-deco-right"></div>
+
+        <div class="cover-content">
+          <p class="eyebrow">Özel Davet</p>
+          <h1>Büyük <span class="accent">Buluşma</span></h1>
+          <div class="divider"></div>
+          <div class="guests-row">
+            <div class="guest">
+              <p class="guest-label">Ev Sahibi</p>
+              <p class="guest-name">Anuş SARGSYAN</p>
+              <p class="guest-title"><strong>RSW TR A.Ş</strong> · Yönetim Kurulu Başkanı</p>
+            </div>
+            <div class="guest">
+              <p class="guest-label">Konuk Konuşmacı</p>
+              <p class="guest-name">Maksim İsip</p>
+              <p class="guest-title"><strong>Micron Global MC</strong> · CEO</p>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="meta-item">
+              <span class="meta-label">Tarih</span>
+              <span class="meta-value">24 Mayıs 2026 · Pazar</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Saat</span>
+              <span class="meta-value">21:00</span>
+            </div>
+          </div>
+          <a class="zoom-badge" href="#toplanti">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 4.5h10.5c1.24 0 2.25 1.01 2.25 2.25v7.5c0 1.24-1.01 2.25-2.25 2.25H4.5c-1.24 0-2.25-1.01-2.25-2.25V6.75c0-1.24 1.01-2.25 2.25-2.25zm12.75 3.75l4.5-2.7v9.9l-4.5-2.7V8.25z"/></svg>
+            <span>Zoom Toplantı</span>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- GEÇİŞ -->
+    <div class="bridge">
+      <h2>Tarihi Gövde Gösterisi Başlıyor!</h2>
+      <p>Türkiye ekibi, yeni Micron platformunda masaya ağırlığını koyuyor!</p>
+      <div class="bridge-rule"></div>
+    </div>
+
+    <!-- ANONS -->
+    <main class="anons" id="anons">
+      <section class="card">
+        <p class="salutation">Değerli Yatırımcılarımız, Vizyoner Liderler ve Değişimin Öncüleri,</p>
+        <p>Bugün sadece bir araya gelmiyoruz; tarihimizi, gücümüzü ve sarsılmaz birliğimizi tüm dünyaya bir kez daha kanıtlamak için <strong>tek yürek</strong> oluyoruz!</p>
+        <p>Bu projenin temelleri atıldığı ilk günden beri, <strong>tarihin en güçlü, en kararlı ve en vizyoner ekibi her zaman Türkiye ekibi oldu!</strong> Bu bir tesadüf değil, bir asalet ve inanç meselesidir!</p>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title"><span>🌟</span> Biz bu ekosistemin takipçisi değil, gerçek kurucusuyuz!</h2>
+        <ul class="milestones">
+          <li><span class="tag">İlk Adım</span><span>Teknopark kapılarını dünyaya açtığında, oraya ayak basan <strong>ilk resmi kurum Türkiye’den giden gururlu belediye heyetleri</strong>ydi!</span></li>
+          <li><span class="tag">İlk İmza</span><span>Bu devasa vizyonun ilk tohumları, <strong>“İlk Adres Proje Anlaşması”</strong> ile yine bu topraklarda, sizin sarsılmaz inancınızla filizlendi!</span></li>
+          <li><span class="tag">İlk Temsilcilik</span><span>Küresel vizyonun sınırlarını aşan <strong>ilk resmi temsilcilik</strong> yine bizimle, Türkiye'de hayata geçti!</span></li>
+          <li><span class="tag">İlk İştirak</span><span>Geleceğe yön veren yapının temel taşını oluşturan <strong>ilk iştirak şirketi</strong> bu topraklarda, bizim gücümüzle kuruldu!</span></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title"><span>🔥</span> Yeni Micron Platformu'nda gücümüzün zirvesine ulaşıyoruz!</h2>
+        <p>Şimdi önümüzde çok kritik bir dönemeç var: <strong>Yeni Micron Platformu.</strong> Bu platformda sıradan bir topluluk gibi karşılanmayı değil; <strong>masanın gerçek sahibi, ana aktörü ve en saygın gücü olmayı hedefliyoruz!</strong> Micron yönetiminin bize olan yaklaşımını, bize duydukları saygıyı ve verecekleri tüm ayrıcalıkları tamamen bizim bu toplantıdaki <strong>muazzam katılımımız</strong> belirleyecek!</p>
+        <blockquote class="quote-box"><strong>Micron'a en net mesaj:</strong> Sesimizin ne kadar gür çıktığını, bir araya geldiğimizde nasıl küresel bir güç odağı yarattığımızı gördüklerinde, platformdaki yerimiz ve ağırlığımız bambaşka bir seviyeye taşınacak!</blockquote>
+        <p class="closing-line">Türkiye topluluğu yine farkını göstersin! Biz dün öncüydük, bugün lideriz, yarın ise oyun kurucu olacağız!</p>
+      </section>
+
+      <section class="meeting-card" id="toplanti">
+        <h2>📅 Toplantı Bilgileri 🕘</h2>
+        <div class="meeting-grid">
+          <div class="meeting-row"><span class="label">Tarih</span><span class="value">24 Mayıs 2026 · Pazar</span></div>
+          <div class="meeting-row"><span class="label">Saat</span><span class="value">21:00</span></div>
+        </div>
+        <div class="cta-group">
+          <a class="btn btn-zoom" href="https://us06web.zoom.us/j/86750572431?pwd=jmE2y52Jp11CioC2VkjO2UARnhIVrz.1" target="_blank" rel="noopener noreferrer">Zoom Toplantıya Katılın</a>
+          <a class="btn btn-form" href="https://forms.gle/wJX6KrqEM1AzS1mW6" target="_blank" rel="noopener noreferrer">Soru Formu — Sorularınızı İletin</a>
+        </div>
+      </section>
+
+      <p class="footer-note">RSW TR · Micron Global MC · Büyük Buluşma</p>
+    </main>
+  </div>
+</body>
+</html>
