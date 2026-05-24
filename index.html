@@ -366,22 +366,14 @@
     /* Kapak ↔ Anons geçişi */
     .bridge {
       text-align: center;
-      padding: 36px 24px 8px;
+      padding: 36px 0 8px;
     }
 
-    .bridge h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(28px, 4.5vw, 44px);
-      font-weight: 900;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      line-height: 1.15;
-      color: var(--violet-deep);
-      margin-bottom: 14px;
-      text-shadow: 0 2px 20px rgba(107, 91, 149, 0.15);
+    .bridge .salutation-hero {
+      margin: 0 0 28px;
     }
 
-    .bridge p {
+    .bridge-tagline {
       font-family: "Montserrat", sans-serif;
       font-size: clamp(14px, 1.6vw, 18px);
       font-weight: 800;
@@ -417,13 +409,111 @@
     .card p:last-child { margin-bottom: 0; }
     .card strong { color: var(--violet-deep); font-weight: 700; }
 
-    .salutation {
-      font-size: 14px;
-      font-style: italic;
+    .salutation-hero {
+      text-align: center;
+      margin: -8px -12px 36px;
+      padding: clamp(36px, 6vw, 56px) clamp(16px, 4vw, 32px);
+      background:
+        radial-gradient(ellipse 90% 80% at 50% 0%, rgba(255, 255, 255, 0.95) 0%, transparent 70%),
+        linear-gradient(160deg, rgba(74, 63, 110, 0.07) 0%, rgba(126, 184, 232, 0.14) 50%, rgba(107, 91, 149, 0.08) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(107, 91, 149, 0.25);
+      box-shadow:
+        0 16px 48px rgba(74, 63, 110, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .salutation-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--violet-deep), #9b7ec8, var(--blue-accent), #9b7ec8, var(--violet-deep));
+    }
+
+    .salutation-ornament {
+      font-family: "Montserrat", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
       color: var(--violet);
+      opacity: 0.7;
       margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px dashed var(--border);
+    }
+
+    .salutation-ornament--bottom {
+      margin: 24px 0 0;
+    }
+
+    .salutation {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      box-shadow: none;
+    }
+
+    .salutation-dear {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 800;
+      font-style: normal;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: clamp(16px, 2.5vw, 24px);
+    }
+
+    .salutation-titles {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-weight: 900;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .salutation-titles em {
+      display: block;
+      font-style: normal;
+      font-size: clamp(28px, 5.2vw, 52px);
+      color: var(--text);
+      text-shadow: 0 2px 0 #fff, 0 8px 32px rgba(107, 91, 149, 0.2);
+    }
+
+    .salutation-titles em + em {
+      margin-top: 0.12em;
+    }
+
+    .salutation-ve {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 2.8vw, 32px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--violet-light);
+      margin: 0.35em 0 0.2em;
+      letter-spacing: 0.2em;
+    }
+
+    .salutation-titles strong {
+      display: block;
+      font-weight: 900;
+      font-size: clamp(32px, 5.8vw, 58px);
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-top: 0.08em;
+      background: linear-gradient(135deg, #3d3260 0%, #6b5b95 35%, #5a8fc4 70%, #4a3f6e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 3px 16px rgba(90, 143, 196, 0.35));
     }
 
     .section-title {
@@ -670,15 +760,26 @@
 
     <!-- GEÇİŞ -->
     <div class="bridge">
-      <h2>Tarihi Gövde Gösterisi Başlıyor!</h2>
-      <p>Türkiye ekibi, yeni Micron platformunda masaya ağırlığını koyuyor!</p>
+      <div class="salutation-hero">
+        <p class="salutation-ornament" aria-hidden="true">◆ ——— ◆</p>
+        <p class="salutation">
+          <span class="salutation-dear">Değerli</span>
+          <span class="salutation-titles">
+            <em>Yatırımcılarımız,</em>
+            <em>Vizyoner Liderler</em>
+            <span class="salutation-ve">ve</span>
+            <strong>Değişimin Öncüleri,</strong>
+          </span>
+        </p>
+        <p class="salutation-ornament salutation-ornament--bottom" aria-hidden="true">◆ ——— ◆</p>
+      </div>
+      <p class="bridge-tagline">Türkiye ekibi, yeni Micron platformunda masaya ağırlığını koyuyor!</p>
       <div class="bridge-rule"></div>
     </div>
 
     <!-- ANONS -->
     <main class="anons" id="anons">
       <section class="card">
-        <p class="salutation">Değerli Yatırımcılarımız, Vizyoner Liderler ve Değişimin Öncüleri,</p>
         <p>Bugün sadece bir araya gelmiyoruz; tarihimizi, gücümüzü ve sarsılmaz birliğimizi tüm dünyaya bir kez daha kanıtlamak için <strong>tek yürek</strong> oluyoruz!</p>
         <p>Bu projenin temelleri atıldığı ilk günden beri, <strong>tarihin en güçlü, en kararlı ve en vizyoner ekibi her zaman Türkiye ekibi oldu!</strong> Bu bir tesadüf değil, bir asalet ve inanç meselesidir!</p>
       </section>
